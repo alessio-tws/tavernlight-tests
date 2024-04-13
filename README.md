@@ -43,3 +43,10 @@ How I solved it:
 
 Q4 asked to fix the memory leak(s) issue(s) in the code.
 For this, I had to make some assumptions, and some might be wrong. I still tried to explain the assumptions I made and why in the comments.
+
+## Q5
+
+<video src='q5.mp4' width='280'>
+
+For Q5, I created a custom logic to send the effects to the client using a 2D array for the effect area.
+I then iterate through the bidimensional array and send the effects where the value of the index [x][y] == 1.
