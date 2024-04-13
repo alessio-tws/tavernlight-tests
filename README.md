@@ -46,7 +46,10 @@ For this, I had to make some assumptions, and some might be wrong. I still tried
 
 ## Q5
 
-<video src='q5.mp4' width='280'>
+<video src='q5.mp4'></video>
 
 For Q5, I created a custom logic to send the effects to the client using a 2D array for the effect area.
+
 I then iterate through the bidimensional array and send the effects where the value of the index [x][y] == 1.
+
+To test the effect, I attached it to an already present spell (in my case light.lua) for quick testing, but the code can be attached to any firing logic (i.e.: a TalkAction)
