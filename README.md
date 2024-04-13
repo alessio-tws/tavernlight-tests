@@ -59,6 +59,8 @@ To test the effect, I attached it to an already present spell (in my case light.
 
 ## Q7
 
+https://github.com/alessio-tws/tavernlight-tests/assets/114413787/a17ea74f-49cf-40b1-abdf-a43a7e5f59cf
+
 For Q7, I created a new client module for the OTClient and then created a widget using the `.otui` file and then added the logic in the `.lua` file. 
 
 The widget is created when the module is loaded and a `tick` repeating function is called every 100ms, where the position of the button is updated.
