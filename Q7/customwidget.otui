@@ -1,0 +1,14 @@
+MainWindow
+  !text: tr('My Widget')
+  size: 660 450
+
+  Button
+    id: clickme
+    text: Click Me!
+    width: 90
+    height: 22
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 1
+    margin-top: 1
+    @onClick: onBtnClick()

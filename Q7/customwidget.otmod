@@ -1,0 +1,9 @@
+Module
+  name: client_customwidget
+  description: A test widget
+  author: Alessio
+  website: www.otclient.info
+  sandboxed: true
+  scripts: [ customwidget ]
+  @onLoad: init()
+  @onUnload: terminate()

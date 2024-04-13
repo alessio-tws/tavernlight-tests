@@ -53,3 +53,14 @@ For Q5, I created a custom logic to send the effects to the client using a 2D ar
 I then iterate through the bidimensional array and send the effects where the value of the index [x][y] == 1.
 
 To test the effect, I attached it to an already present spell (in my case light.lua) for quick testing, but the code can be attached to any firing logic (i.e.: a TalkAction)
+
+## Q6
+> In Progress
+
+## Q7
+
+For Q7, I created a new client module for the OTClient and then created a widget using the `.otui` file and then added the logic in the `.lua` file. 
+
+The widget is created when the module is loaded and a `tick` repeating function is called every 100ms, where the position of the button is updated.
+
+I bound a `onBtnClick` function to the Button widget and then reset the position when the button is clicked (or when reaching the minimum margin left)
