@@ -55,7 +55,26 @@ I then iterate through the bidimensional array and send the effects where the va
 To test the effect, I attached it to an already present spell (in my case light.lua) for quick testing, but the code can be attached to any firing logic (i.e.: a TalkAction)
 
 ## Q6
-> In Progress
+
+For Q6, I needed to modify the source code of both the server and the client.
+
+For the server, I should:
+- Create a packet to broadcast changes to the creature storage index 1001 to client, when this value is == 1 the shader should be active
+- Send the packet whenever that specific storage index changes
+
+For the client, I should:
+- Handle the value sent by the server with the newly created packet
+- Store the value in a variable inside the creature class
+- In the `internalDrawOutfit` method of the creature I check if the variable is set
+- If it's set, load a shader inside the `g_painter` object so that the shader will be used to draw the sprite
+
+This should ensure replication of the effect.
+
+> TODO: 
+> - Extrapolate code from source (pushing the entire source of the client and server seems a bit of an overkill)
+> - Write a simple GLSL shader for the effect 
+> - Write a LUA script on the server to recreate the effect
+> - Record video
 
 ## Q7
 
