@@ -58,22 +58,31 @@ To test the effect, I attached it to an already present spell (in my case light.
 
 For Q6, I needed to modify the source code of both the server and the client.
 
-For the server, I should:
-- Create a packet to broadcast changes to the creature storage index 1001 to client, when this value is == 1 the shader should be active
-- Send the packet whenever that specific storage index changes
+For the server, I had to:
+- Create a new field in the `Creature` class to store the custom shader enabled state (with getter and setter)
+- Create a new method `Game::updateCreatureCustomShader(const Creature* creature)` that will send the creature custom shader state to the client
+- Create a new method `Player::sendCreatureCustomShader(const Creature* creature)` that will send a creature custom shader state to the client
+- Create a new method `ProtocolGame::sendShaderStatus(const Creature* creature)` that will send the shader state of a creature to the client using a custom NetworkMessage
+- Create a new static method `LuaScriptInterface::luaCreatureSetShader(lua_State* L)` and bind it so that it can be used in LUA
 
-For the client, I should:
-- Handle the value sent by the server with the newly created packet
-- Store the value in a variable inside the creature class
-- In the `internalDrawOutfit` method of the creature I check if the variable is set
-- If it's set, load a shader inside the `g_painter` object so that the shader will be used to draw the sprite
+For the client, I had to:
+- In the `Creature::draw` method I added the following code to use a custom shader if set:
+```cpp
+if (m_shader) {
+	m_shader->bind();
+	g_painter->setShaderProgram(m_shader);
+}
+datType->draw(dest, scaleFactor, 0, xPattern, yPattern, zPattern, animationPhase, yPattern == 0 ? lightView : nullptr);
+g_painter->resetShaderProgram();
+```
+- In the `ProtocolGame::parseMessage` I added a check to see if the opcode is the newly added message for the custom shader
+- Set the `m_shader` field of the Creature if needed
 
-This should ensure replication of the effect.
+Sending this message to every connected client should ensure replication of the shader effect.
 
 > TODO: 
 > - Extrapolate code from source (pushing the entire source of the client and server seems a bit of an overkill)
 > - Write a simple GLSL shader for the effect 
-> - Write a LUA script on the server to recreate the effect
 > - Record video
 
 ## Q7
