@@ -80,10 +80,13 @@ g_painter->resetShaderProgram();
 
 Sending this message to every connected client should ensure replication of the shader effect.
 
-> TODO: 
-> - Extrapolate code from source (pushing the entire source of the client and server seems a bit of an overkill)
-> - Write a simple GLSL shader for the effect 
-> - Record video
+After the above changes, I created a quick and simple shader to demonstrate the effect (a red tint) and a LUA script (Q6.lua) on the server to create the effect in the video below.
+
+I'm not sure how to share the changes made to the source code of server and client, but I can easily provide it if needed.
+
+As you can see from the video, the shader isn't as complex as the one in the original video, it's just a simple red tint on the sprite, but I hope it's enough to showcase the intention of the question (replication and source code modification)
+
+https://github.com/alessio-tws/tavernlight-tests/assets/114413787/d0f8be07-8710-4594-a7a6-509bc632967a
 
 ## Q7
 
